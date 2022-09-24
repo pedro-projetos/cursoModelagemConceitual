@@ -22,7 +22,6 @@ public class CategoriaResource {
 		lista.add(categoria1);
 		lista.add(categoria2);
 		
-				
 		return lista;
 	}
 }
