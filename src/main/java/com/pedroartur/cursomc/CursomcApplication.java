@@ -13,6 +13,7 @@ import com.pedroartur.cursomc.domain.Cidade;
 import com.pedroartur.cursomc.domain.Cliente;
 import com.pedroartur.cursomc.domain.Endereco;
 import com.pedroartur.cursomc.domain.Estado;
+import com.pedroartur.cursomc.domain.ItemPedido;
 import com.pedroartur.cursomc.domain.Pagamento;
 import com.pedroartur.cursomc.domain.PagamentoBoleto;
 import com.pedroartur.cursomc.domain.PagamentoCartao;
@@ -25,6 +26,7 @@ import com.pedroartur.cursomc.repositories.CidadeRepository;
 import com.pedroartur.cursomc.repositories.ClienteRepository;
 import com.pedroartur.cursomc.repositories.EnderecoRepository;
 import com.pedroartur.cursomc.repositories.EstadoRepository;
+import com.pedroartur.cursomc.repositories.ItemPedidoRepository;
 import com.pedroartur.cursomc.repositories.PagamentoRepository;
 import com.pedroartur.cursomc.repositories.PedidoRepository;
 import com.pedroartur.cursomc.repositories.ProdutoRepository;
@@ -57,6 +59,9 @@ public class CursomcApplication implements CommandLineRunner {
 	
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -114,6 +119,19 @@ public class CursomcApplication implements CommandLineRunner {
 	
 	pedidoRepository.saveAll(Arrays.asList(pedido1,pedido2));
 	pagamentoRepository.saveAll(Arrays.asList(pagamento1,pagamento2));
+	
+	ItemPedido itemPedido1 = new ItemPedido(pedido1, produto1, 0.00,1, 2500.00);
+	ItemPedido itemPedido2 = new ItemPedido(pedido1, produto3, 0.00, 2, 80.00);
+	ItemPedido itemPedido3 = new ItemPedido(pedido2, produto2, 100.00, 1, 800.00);
+	
+	pedido1.getItens().addAll(Arrays.asList(itemPedido1,itemPedido2));
+	pedido2.getItens().addAll(Arrays.asList(itemPedido3));
+	
+	produto1.getItens().addAll(Arrays.asList(itemPedido1));
+	produto2.getItens().addAll(Arrays.asList(itemPedido3));
+	produto3.getItens().addAll(Arrays.asList(itemPedido2));
+	
+	itemPedidoRepository.saveAll(Arrays.asList(itemPedido1,itemPedido2,itemPedido3));
 	
 	}
 
