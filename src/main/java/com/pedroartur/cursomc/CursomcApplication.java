@@ -32,11 +32,11 @@ public class CursomcApplication implements CommandLineRunner {
 	Produto produto2 = new Produto(null,"Impressora",800.00);
 	Produto produto3 = new Produto(null,"Mouse",80.00);
 	
-	categoria1.getProdutos().addAll(Arrays.asList(produto1,produto2,produto3));
+	categoria1.getProdutos().addAll(Arrays.asList(produto1,produto3));
 	categoria2.getProdutos().addAll(Arrays.asList(produto2));
 	
 	produto1.getCategorias().addAll(Arrays.asList(categoria1));
-	produto2.getCategorias().addAll(Arrays.asList(categoria1,categoria2));
+	produto2.getCategorias().addAll(Arrays.asList(categoria2));
 	produto3.getCategorias().addAll(Arrays.asList(categoria1));
 	
 	
