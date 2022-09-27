@@ -14,4 +14,5 @@ O projeto foi implementado utilizando as seguintes tecnologias técnicas:
 * ORM (Mapeamento Objeto Relacional);
 * JAVA com Spring Boot e JPA;
 * Endpoints com REST;
+* Banco de dados relacional em memória H2 para testes.
 * Visualização via JSON usando POSTMAN.
